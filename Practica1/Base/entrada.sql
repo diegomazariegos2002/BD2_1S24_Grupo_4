@@ -1,4 +1,4 @@
-
+use prac1;
 -- PROCEDIMIENTO DE REGISTRO DE USUARIOS
 EXEC prac1.userRegister 'Estudiante','Estrella','2001-12-01',22,'test@gmail.com','123AAA','user1'      -- COMMIT
 EXEC prac1.userRegister 'Estudiante','Estrella','2001-12-01',22,'test@gmail.com','123AAA','user2'      -- ROLLBACK Correo repetido

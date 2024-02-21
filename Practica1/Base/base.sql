@@ -293,17 +293,23 @@ BEGIN
             ELSE
             BEGIN
                 ROLLBACK;
+               	INSERT INTO [prac1].[history_log] (Triggers, NombreTrigger, Disparador)
+    			VALUES ('history log', 'ERROR', 'La edad debe ser un número entero positivo.');
                 PRINT 'Error: La edad debe ser un número entero positivo.';
             END
         END
         ELSE
         BEGIN
             ROLLBACK;
+           	INSERT INTO [prac1].[history_log] (Triggers, NombreTrigger, Disparador)
+    		VALUES ('history log', 'ERROR', 'El correo electrónico o el nombre de usuario ya están registrados.');
             PRINT 'Error: El correo electrónico o el nombre de usuario ya están registrados.';
         END
     END TRY
     BEGIN CATCH
         ROLLBACK;
+       	INSERT INTO [prac1].[history_log] (Triggers, NombreTrigger, Disparador)
+    	VALUES ('history log', 'ERROR', 'Se produjo un error durante la transacción.');
         PRINT 'Error: Se produjo un error durante la transacción.';
     END CATCH
 END;
@@ -332,13 +338,17 @@ BEGIN
      ELSE
      BEGIN
          -- Rollback en caso de que el usuario no exista
-         ROLLBACK;
-         PRINT 'Error: El usuario con el ID especificado no existe.';
+        ROLLBACK;
+        INSERT INTO [prac1].[history_log] (Triggers, NombreTrigger, Disparador)
+    	VALUES ('history log', 'ERROR', 'El usuario con el ID especificado no existe.');
+        PRINT 'Error: El usuario con el ID especificado no existe.';
      END
  END TRY
  BEGIN CATCH
      -- Rollback en caso de error
      ROLLBACK;
+     INSERT INTO [prac1].[history_log] (Triggers, NombreTrigger, Disparador)
+     VALUES ('history log', 'ERROR', 'Error durante la creación del snap, inténtalo de nuevo más tarde.');
      PRINT 'Error durante la creación del snap, inténtalo de nuevo más tarde.';
  END CATCH;
 END;
@@ -375,12 +385,16 @@ BEGIN
                  PRINT 'Error: El usuario ya le dio like al snap anteriormente.';
                  -- Rollback en caso de error
                  ROLLBACK;
+                 INSERT INTO [prac1].[history_log] (Triggers, NombreTrigger, Disparador)
+                 VALUES ('history log', 'ERROR', 'El usuario ya le dio like al snap anteriormente.');
              END
          END
          ELSE
          BEGIN
              -- Rollback en caso de que el usuario no exista
              ROLLBACK;
+             INSERT INTO [prac1].[history_log] (Triggers, NombreTrigger, Disparador)
+             VALUES ('history log', 'ERROR', 'El usuario con el ID especificado no existe.');
              PRINT 'Error: El usuario con el ID especificado no existe.';
          END
      END
@@ -388,12 +402,16 @@ BEGIN
      BEGIN
          -- Rollback en caso de que el snap no exista
          ROLLBACK;
+         INSERT INTO [prac1].[history_log] (Triggers, NombreTrigger, Disparador)
+         VALUES ('history log', 'ERROR', 'El snap con el ID especificado no existe.');
          PRINT 'Error: El snap con el ID especificado no existe.';
      END
  END TRY
  BEGIN CATCH
      -- Rollback en caso de error
      ROLLBACK;
+     INSERT INTO [prac1].[history_log] (Triggers, NombreTrigger, Disparador)
+     VALUES ('history log', 'ERROR', 'Error durante el registro del like, Intentar de nuevo más tarde.');
      PRINT 'Error durante el registro del like, Intentar de nuevo más tarde.';
  END CATCH;
 END;
@@ -427,36 +445,48 @@ BEGIN
 						ELSE
 						BEGIN
               				ROLLBACK;
+                            INSERT INTO [prac1].[history_log] (Triggers, NombreTrigger, Disparador)
+                            VALUES ('history log', 'ERROR', 'El comentario no puede ser nulo, ingrese un comentario válido.');
 							PRINT 'El comentario no puede ser nulo, ingrese un comentario válido.';
 						END
 					END
 					ELSE
 					BEGIN
               			ROLLBACK;
+                        INSERT INTO [prac1].[history_log] (Triggers, NombreTrigger, Disparador)
+                        VALUES ('history log', 'ERROR', 'El snap no existe, intente con uno diferente.');
 						PRINT 'El snap no existe, intente con uno diferente.';
 					END
 				END
 				ELSE
 				BEGIN
               		ROLLBACK;
+                    INSERT INTO [prac1].[history_log] (Triggers, NombreTrigger, Disparador)
+                    VALUES ('history log', 'ERROR', 'El usuario no existe, intente con uno diferente.');
 					PRINT 'El usuario no existe, intente con uno diferente.';
 				END
 	        END
 	        ELSE
 	        BEGIN
               	ROLLBACK;
+                INSERT INTO [prac1].[history_log] (Triggers, NombreTrigger, Disparador)
+                VALUES ('history log', 'ERROR', 'El id del usuario no es númerico. Por favor ingrese un id válido.');
 	            PRINT 'El id del usuario no es númerico. Por favor ingrese un id válido.';
 	        END
 	    END
 	    ELSE
 	    BEGIN
             ROLLBACK;
+            INSERT INTO [prac1].[history_log] (Triggers, NombreTrigger, Disparador)
+            VALUES ('history log', 'ERROR', 'El id del snap no es númerico. Por favor ingrese un id válido.');
 	        PRINT 'El id del snap no es númerico. Por favor ingrese un id válido.';
 	    END
   END TRY
   BEGIN CATCH
       -- Rollback en caso de error
   ROLLBACK;
+  INSERT INTO [prac1].[history_log] (Triggers, NombreTrigger, Disparador)
+  VALUES ('history log', 'ERROR', 'Error al agregar el comentario, intentelo más tarde.');
   PRINT 'Error al agregar el comentario, intentelo más tarde.';
   END CATCH;
 END;
@@ -489,36 +519,48 @@ BEGIN
 						ELSE
 						BEGIN
               				ROLLBACK;
+                            INSERT INTO [prac1].[history_log] (Triggers, NombreTrigger, Disparador)
+                            VALUES ('history log', 'ERROR', 'Siguiendo ya al usuario, solo puede seguir a un usuario una vez.');
 							PRINT 'Siguiendo ya al usuario, solo puede seguir a un usuario una vez.';
 						END
 					END
 					ELSE
 					BEGIN
               			ROLLBACK;
+                        INSERT INTO [prac1].[history_log] (Triggers, NombreTrigger, Disparador)
+                        VALUES ('history log', 'ERROR', 'El usuario a seguir no existe, intente con uno diferente.');
 						PRINT 'El usuario a seguir no existe, intente con uno diferente.';
 					END
 				END
 				ELSE
 				BEGIN
               		ROLLBACK;
+                    INSERT INTO [prac1].[history_log] (Triggers, NombreTrigger, Disparador)
+                    VALUES ('history log', 'ERROR', 'El usuario que sigue no existe, intente con uno diferente.');
 					PRINT 'El usuario que sigue no existe, intente con uno diferente.';
 				END
 	        END
 	        ELSE
 	        BEGIN
               	ROLLBACK;
+                INSERT INTO [prac1].[history_log] (Triggers, NombreTrigger, Disparador)
+                VALUES ('history log', 'ERROR', 'El id del usuario a seguir no es númerico. Por favor ingrese un id válido.');
 	            PRINT 'El id del usuario a seguir no es númerico. Por favor ingrese un id válido.';
 	        END
 	    END
 	    ELSE
 	    BEGIN
             ROLLBACK;
+            INSERT INTO [prac1].[history_log] (Triggers, NombreTrigger, Disparador)
+            VALUES ('history log', 'ERROR', 'El id del usuario que sigue no es númerico. Por favor ingrese un id válido.');
 	        PRINT 'El id del usuario que sigue no es númerico. Por favor ingrese un id válido.';
 	    END
   END TRY
   BEGIN CATCH
       -- Rollback en caso de error
   ROLLBACK;
+  INSERT INTO [prac1].[history_log] (Triggers, NombreTrigger, Disparador)
+  VALUES ('history log', 'ERROR', 'Error al seguir a un usuario, intentelo de nuevo más tarde.');
   PRINT 'Error al seguir a un usuario, intentelo de nuevo más tarde.';
   END CATCH;
 END;
