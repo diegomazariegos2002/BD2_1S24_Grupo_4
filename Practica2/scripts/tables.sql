@@ -1,10 +1,10 @@
-create database BD2PRACTICA2;
+create database BDGenreGenre2PRACTICA2;
 USE BD2PRACTICA2;
 
-CREATE TABLE Genre (
+CREATE TABLE genre (
     id INT,
     checksum VARCHAR(36),
-    created_at BIGINT,
+	created_at BIGINT,
     name VARCHAR(255),
     slug VARCHAR(255),
     updated_at INT,
@@ -13,7 +13,7 @@ CREATE TABLE Genre (
 );
 
 
-CREATE TABLE Franchises (
+CREATE TABLE franchises (
     id INT,
     checksum VARCHAR(36),
     created_at BIGINT,
@@ -26,7 +26,7 @@ CREATE TABLE Franchises (
 );
 
 
-CREATE TABLE Characters (
+CREATE TABLE characters (
     id INT,
     akas VARCHAR(255),
     checksum VARCHAR(36),
@@ -46,7 +46,7 @@ CREATE TABLE Characters (
 
 
 
-CREATE TABLE Languages (
+CREATE TABLE languages (
     id INT,
     checksum VARCHAR(36),
     created_at BIGINT,
@@ -58,7 +58,7 @@ CREATE TABLE Languages (
 );
 
 
-CREATE TABLE Multiplayer_modes (
+CREATE TABLE multiplayer_modes (
     id INT,
     campaigncoop BOOLEAN,
     checksum VARCHAR(36),

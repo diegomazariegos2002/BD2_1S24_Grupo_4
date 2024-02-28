@@ -80,7 +80,7 @@ SELECT count(*) from languages;
 SELECT count(*) from multiplayer_modes;
 
 -- FULL BACKUP
--- mysqldump -u root -p bd2practica2 > C:\Users\luisb\OneDrive\Escritorio\BD2_1S24_Grupo_4\Practica2\Backups\backup_full_4.sql
+-- mysqldump -u root -p bd2practica2 > /home/yeinny/Documents/GitHub/BD2_1S24_Grupo_4/Practica2/Backups/backup_full_4.sql
 
 -- INCREMENTAL BACKUP
--- mysqldump -u root -p bd2practica2 characters > C:\Users\luisb\OneDrive\Escritorio\BD2_1S24_Grupo_4\Practica2\Backups\backup_incremental_4.sql
+-- mysqldump -u root -p bd2practica2 characters > /home/yeinny/Documents/GitHub/BD2_1S24_Grupo_4/Practica2/Backups/backup_incremental_4.sql
