@@ -1,4 +1,4 @@
-create database BDGenreGenre2PRACTICA2;
+create database BD2PRACTICA2;
 USE BD2PRACTICA2;
 
 CREATE TABLE genre (
