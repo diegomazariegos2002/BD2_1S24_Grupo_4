@@ -264,3 +264,28 @@ SELECT count(*) from franchises;
 SELECT count(*) from characters;
 SELECT count(*) from languages;
 SELECT count(*) from multiplayer_modes;
+
+
+
+--------------------------------- dia 13
+
+TRUNCATE TABLE genre;
+TRUNCATE TABLE franchises;
+TRUNCATE TABLE characters;
+TRUNCATE TABLE languages;
+TRUNCATE TABLE multiplayer_modes;
+
+-- FULL BACKUP RECOVERY
+-- mysql -u root -p bd2practica2 < C:\Users\luisb\OneDrive\Escritorio\BD2_1S24_Grupo_4\Practica2\Backups\backup_incremental_3.sql
+
+SELECT * from genre;
+SELECT * from franchises;
+SELECT * from characters;
+SELECT * from languages;
+SELECT * from multiplayer_modes;
+
+SELECT count(*) from genre;
+SELECT count(*) from franchises;
+SELECT count(*) from characters;
+SELECT count(*) from languages;
+SELECT count(*) from multiplayer_modes;
