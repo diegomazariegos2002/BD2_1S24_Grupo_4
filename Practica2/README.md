@@ -1,4 +1,3 @@
-# Link de repositorio
+# Link de la documentación
 
-https://github.com/diegomazariegos2002/BD2_1S24_Grupo_4/tree/main/Practica2
-
+https://docs.google.com/document/d/1n9IyR5QckpbZ7iTKPZo-OVXjRYnSBsNDuifb-UXK8e8/edit?usp=sharing
