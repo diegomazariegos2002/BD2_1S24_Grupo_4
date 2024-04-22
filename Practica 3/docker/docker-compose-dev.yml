@@ -6,7 +6,7 @@ services:
     image: mongo:latest
     container_name: server_mongo_database
     env_file:
-      - /.env_development
+      - ./.env_development
     volumes:
       - ./data:/data/db
     restart: always
@@ -17,7 +17,7 @@ services:
     image: redis:latest
     container_name: server_redis_database
     env_file:
-      - /.env_development
+      - ./.env_development
     volumes:
       - ./redis_data:/data
     restart: always

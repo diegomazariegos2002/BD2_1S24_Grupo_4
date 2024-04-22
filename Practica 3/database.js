@@ -30,7 +30,7 @@ class Database {
         this.mongoConnectionPromise = mongoose.connect(mongoUri)
             .then(() => console.log('MongoDB Connected'))
             .catch(err => console.error('MongoDB Connection Error:', err));
-    }
+    }    
 
     getInstanceRedis() {
         return this.redisConnectionPromise;

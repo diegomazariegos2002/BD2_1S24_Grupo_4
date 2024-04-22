@@ -5,6 +5,7 @@ const app = express();
 const morgan = require('morgan');
 
 const mainRoute = require('./routers/mainRoute');
+const seriesRoutes = require('./routers/seriesRoute');
 
 //middleware
 app.use(morgan('dev'));
@@ -14,5 +15,7 @@ app.use(express.json());
 app.use(cors());
 
 app.use('/', mainRoute);
+
+app.use('/serie', seriesRoutes);
 
 module.exports = app;
