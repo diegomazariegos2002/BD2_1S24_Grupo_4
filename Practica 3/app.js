@@ -6,6 +6,7 @@ const morgan = require('morgan');
 
 const mainRoute = require('./routers/mainRoute');
 const seriesRoutes = require('./routers/seriesRoute');
+const movieRoute = require('./routers/movieRoute');
 
 //middleware
 app.use(morgan('dev'));
@@ -15,7 +16,7 @@ app.use(express.json());
 app.use(cors());
 
 app.use('/', mainRoute);
-
 app.use('/serie', seriesRoutes);
+app.use('/pelicula', movieRoute);
 
 module.exports = app;

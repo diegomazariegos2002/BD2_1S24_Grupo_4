@@ -25,17 +25,29 @@ class Database {
         });
     }
 
+    /**
+     * Initializes the MongoDB client.
+     * @returns {Promise<void>} A promise that resolves when the MongoDB client is connected.
+     */
     initMongoClient() {
         const mongoUri = `mongodb://${process.env.MONGO_INITDB_ROOT_USERNAME}:${process.env.MONGO_INITDB_ROOT_PASSWORD}@${process.env.MONGO_CONTAINER_NAME}:${process.env.MONGO_PORT}/${process.env.MONGO_INITDB_DATABASE}?authSource=admin`;
         this.mongoConnectionPromise = mongoose.connect(mongoUri)
             .then(() => console.log('MongoDB Connected'))
             .catch(err => console.error('MongoDB Connection Error:', err));
-    }    
-
-    getInstanceRedis() {
-        return this.redisConnectionPromise;
     }
 
+    /**
+     * Returns the Redis client instance after it's connected.
+     * @returns {RedisClientType} The connected Redis client.
+     */
+    getInstanceRedis() {
+        return this.redisConnectionPromise.then(() => this.clientRedis);
+    }
+
+    /**
+     * Returns the MongoDB connection promise.
+     * @returns {Promise<void>} A promise that resolves when the MongoDB client is connected.
+     */
     getMongoConnectionPromise() {
         return this.mongoConnectionPromise;
     }
