@@ -1,7 +1,6 @@
 version: '3'
 
 services:
-
   server_mongo_database:
     image: mongo:latest
     container_name: server_mongo_database
@@ -12,6 +11,8 @@ services:
     restart: always
     ports:
       - "27017:27017"
+    networks:
+      - my_network
 
   server_redis_database:
     image: redis:latest
@@ -21,7 +22,26 @@ services:
     volumes:
       - ./redis_data:/data
     restart: always
-    expose:
-      - "6379"
     ports:
       - "6379:6379"
+    networks:
+      - my_network
+
+  node_app:
+    image: node:16
+    container_name: node_app
+    working_dir: /usr/src/app
+    volumes:
+      - ..:/usr/src/app
+    ports:
+      - "5000:5000"
+    command: npm run dev
+    depends_on:
+      - server_mongo_database
+      - server_redis_database
+    networks:
+      - my_network
+
+networks:
+  my_network:
+    driver: bridge
